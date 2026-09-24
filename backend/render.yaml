@@ -1,0 +1,64 @@
+services:
+  - type: web
+    name: aporum-backend
+    runtime: python
+    plan: free
+    # Installs deps, then rebuilds the RAG embeddings index from whatever PDFs
+    # are in rag/documents/ at deploy time. This means vector_store/index.json
+    # never needs to be committed to git or rebuilt manually — every deploy
+    # (including ones triggered by editing the PDFs) picks up fresh content
+    # automatically. Costs a few cents in OpenAI embedding calls per deploy.
+    buildCommand: "pip install -r requirements.txt && cd rag && python build_index.py && cd .."
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CHAT_MODEL
+        value: gpt-4o-mini
+      - key: EMBED_MODEL
+        value: text-embedding-3-small
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: TICKETS_PATH
+        value: data/tickets.xlsx
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
+      - key: COMPANY_SENDER_EMAIL
+        sync: false
+      - key: OWNER_NOTIFICATION_EMAIL
+        sync: false
+      - key: GOOGLE_CALENDAR_ID
+        value: primary
+      - key: AUTOMATION_SECRET
+        sync: false
+      - key: AUTO_REPLY_CONFIDENCE_THRESHOLD
+        value: "0.7"
+      - key: ENABLE_IN_PROCESS_SCHEDULER
+        value: "true"
+      - key: TICKET_PROCESS_INTERVAL_MINUTES
+        value: "10"
+
+  # Optional but recommended: a dedicated Render Cron Job hits /api/tickets/process
+  # on a schedule, so ticket processing still runs even if the free web service has
+  # spun down from inactivity (the in-process scheduler above only runs while the
+  # web service itself is awake).
+  - type: cron
+    name: aporum-ticket-processor
+    runtime: python
+    plan: free
+    schedule: "*/15 * * * *"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: >
+      python -c "import requests, os;
+      r = requests.post(os.environ['BACKEND_URL'] + '/api/tickets/process',
+      headers={'x-automation-secret': os.environ['AUTOMATION_SECRET']});
+      print(r.status_code, r.text)"
+    envVars:
+      - key: BACKEND_URL
+        sync: false
+      - key: AUTOMATION_SECRET
+        sync: false

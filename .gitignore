@@ -1,0 +1,25 @@
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# --- Python / backend ---
+__pycache__/
+*.pyc
+backend/venv/
+backend/.venv/
+backend/.env
+
+# Generated at runtime — don't commit real customer data
+backend/data/tickets.xlsx
+
+# RAG embeddings index — rebuilt automatically on every Render deploy
+# (see backend/render.yaml buildCommand), and locally via rag/build_index.py.
+# Not committed so there's never a stale index sitting in git history.
+backend/rag/vector_store/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
