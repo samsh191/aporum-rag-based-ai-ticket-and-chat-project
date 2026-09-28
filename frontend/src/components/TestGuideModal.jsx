@@ -5,19 +5,19 @@ const STORAGE_KEY = "aporum_test_guide_dismissed";
 const STEPS = [
   {
     title: "Create ticket",
-    body: 'Click on "Inquire now" button',
+    body: '\nClick on "Inquire now" button',
   },
   {
     title: "Enter details",
-    body: "You can enter mobile as 0400000000 but put any mailinator.com email to see the email",
+    body: '\nYou can enter mobile as 0400000000 but put any mailinator.com email to see the email',
   },
   {
-    title: "Send an inquiry",
-    body: 'Click "Inquire now" (top right) and submit the form to get a ticket ID.',
+    title: "Ticke Admin",
+    body: '\nCopy and paste this https://aporum-rag-based-ai-ticket-and-chat.vercel.app/admin',
   },
   {
-    title: "Ticket Admin",
-    body: 'https://aporum-rag-based-ai-ticket-and-chat.vercel.app/admin and Click "Run AI agent now"',
+    title: "Run AI agent",
+    body: '\nClick "Run AI agent now"',
   },
 ];
 
