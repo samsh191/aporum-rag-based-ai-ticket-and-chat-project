@@ -47,7 +47,7 @@ function AdminKeyGate({ onUnlock }) {
       <form onSubmit={submit} className="bg-surface border border-inkline rounded-md p-8 w-full max-w-sm">
         <h1 className="font-display text-xl font-semibold text-ink">Admin access</h1>
         <p className="text-sm text-muted mt-2">
-          Enter your backend's <code className="text-xs bg-paper px-1 py-0.5 rounded">AUTOMATION_SECRET</code> to
+          Enter admin as password <code className="text-xs bg-paper px-1 py-0.5 rounded">Create Tickets First</code> to
           view tickets.
         </p>
         <input
