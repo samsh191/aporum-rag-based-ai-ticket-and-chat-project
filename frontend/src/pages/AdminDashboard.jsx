@@ -43,7 +43,13 @@ function AdminKeyGate({ onUnlock }) {
   };
 
   return (
-    <div className="min-h-screen bg-paper flex items-center justify-center p-6">
+    <div className="relative min-h-screen bg-paper flex items-center justify-center p-6">
+      <a
+        href="/"
+        className="absolute top-6 left-1/2 -translate-x-1/2 text-sm font-medium text-ink border border-inkline hover:border-ink px-4 py-2 rounded-sm"
+      >
+        Home
+      </a>
       <form onSubmit={submit} className="bg-surface border border-inkline rounded-md p-8 w-full max-w-sm">
         <h1 className="font-display text-xl font-semibold text-ink">Admin access</h1>
         <p className="text-sm text-muted mt-2">
@@ -185,9 +191,17 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-paper">
       <header className="border-b border-inkline bg-surface">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 h-16 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           <h1 className="font-display text-xl font-semibold text-ink">Ticket dashboard</h1>
-          <div className="flex items-center gap-3">
+
+          <a
+            href="/"
+            className="inline-flex items-center text-sm font-medium text-ink border border-inkline hover:border-ink px-4 py-2 rounded-sm transition-colors"
+          >
+            Home
+          </a>
+
+          <div className="flex items-center justify-end gap-3">
             <button
               onClick={() => load(adminKey)}
               disabled={loading}

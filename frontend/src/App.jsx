@@ -11,6 +11,7 @@ import BookingModal from "./components/BookingModal";
 import ChatWidget from "./components/ChatWidget";
 import ChatLauncher from "./components/ChatLauncher";
 import AdminDashboard from "./pages/AdminDashboard";
+import TestGuideModal from "./components/TestGuideModal";
 
 export default function App() {
   const [inquiryOpen, setInquiryOpen] = useState(false);
@@ -47,6 +48,7 @@ export default function App() {
 
       <Footer />
 
+      <TestGuideModal />
       <InquiryModal open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
       <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
 
