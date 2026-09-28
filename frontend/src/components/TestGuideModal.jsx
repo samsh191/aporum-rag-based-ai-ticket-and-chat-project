@@ -5,7 +5,7 @@ const STORAGE_KEY = "aporum_test_guide_dismissed";
 const STEPS = [
   {
     title: "Create ticket",
-    body: 'Click on "Inquire now" button (You can create multiple tickets',
+    body: 'Click on "Inquire now" button (You can create multiple tickets)',
   },
   {
     title: "Enter details",
