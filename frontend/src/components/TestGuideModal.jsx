@@ -5,11 +5,11 @@ const STORAGE_KEY = "aporum_test_guide_dismissed";
 const STEPS = [
   {
     title: "Create ticket",
-    body: 'Click on "Inquire now" button',
+    body: 'Click on "Inquire now" button (You can create multiple tickets',
   },
   {
     title: "Enter details",
-    body: 'You can enter mobile as 0400000000 but put any mailinator.com email to see the email',
+    body: 'You can enter mobile as 0400000000 but enter any mailinator.com email to see the email in action',
   },
   {
     title: "Admin Dashboard",
