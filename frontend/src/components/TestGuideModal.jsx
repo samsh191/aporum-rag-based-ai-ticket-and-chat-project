@@ -12,7 +12,7 @@ const STEPS = [
     body: 'You can enter mobile as 0400000000 but put any mailinator.com email to see the email',
   },
   {
-    title: "Ticke Admin",
+    title: "Admin Dashboard",
     body: 'Copy and paste this https://aporum-rag-based-ai-ticket-and-chat.vercel.app/admin',
   },
   {
