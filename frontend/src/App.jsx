@@ -12,6 +12,7 @@ import ChatWidget from "./components/ChatWidget";
 import ChatLauncher from "./components/ChatLauncher";
 import AdminDashboard from "./pages/AdminDashboard";
 import TestGuideModal from "./components/TestGuideModal";
+import DemoBanner from "./components/DemoBanner";
 
 export default function App() {
   const [inquiryOpen, setInquiryOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-paper">
       <Navbar onInquireClick={() => setInquiryOpen(true)} onBookClick={() => setBookingOpen(true)} />
-
+       <DemoBanner />
       <main>
         <Hero
           onCompareClick={() => document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" })}
